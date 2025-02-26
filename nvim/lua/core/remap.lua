@@ -42,3 +42,4 @@ keymap.set("n", "<leader>h", ":split <cr>")
 keymap.set("n", "<leader>v", ":vsplit <cr>")
 
 keymap.set("n", "<leader>pf", ":! prettier -w % <cr>")
+keymap.set("n", "H", "<cmd>set hlsearch!<cr>", { desc = "Highlight current word" })

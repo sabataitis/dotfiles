@@ -18,6 +18,7 @@ return {
         lsp_zero.on_attach(function(_, bufnr)
             lsp_zero.default_keymaps({ buffer = bufnr })
         end);
+        vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 
         require('mason').setup {}
         require('mason-lspconfig').setup()
@@ -27,6 +28,22 @@ return {
         lspconfig.tsserver.setup{}
         lspconfig.eslint.setup{}
         lspconfig.clangd.setup{}
+
+        lspconfig.kotlin_language_server.setup{}
+
+        lspconfig.sqls.setup{
+            settings = {
+                sqls = {
+                    connections = {
+                        {
+                            driver = 'postgresql',
+                            dataSourceName = 'host=127.0.0.1 port=5432 user=postgres dbname=localdb sslmode=disable',
+                        },
+                    },
+                },
+            },
+
+        }
 
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action();
